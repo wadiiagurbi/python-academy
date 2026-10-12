@@ -1,0 +1,201 @@
+@import 'vuetify/styles';
+@import '@mdi/font/css/materialdesignicons.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.v-application {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.code-block-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px 0;
+  background: var(--v-theme-surface);
+  border: 1px solid var(--v-border-color);
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--v-theme-surface-variant);
+  border-bottom: 1px solid var(--v-border-color);
+}
+
+.code-language {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--v-text-medium-emphasis);
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--v-text-medium-emphasis);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  background: var(--v-theme-surface-container);
+  color: var(--v-text-high-emphasis);
+}
+
+pre.hljs {
+  margin: 0;
+  padding: 16px;
+  border-radius: 0;
+  overflow-x: auto;
+}
+
+.hljs {
+  background: transparent !important;
+}
+
+.v-theme--light .hljs {
+  color: #24292e;
+}
+
+.v-theme--dark .hljs {
+  color: #e1e4e8;
+}
+
+.v-theme--light .hljs-keyword,
+.v-theme--light .hljs-selector-tag,
+.v-theme--light .hljs-built_in,
+.v-theme--light .hljs-name,
+.v-theme--light .hljs-tag {
+  color: #d73a49;
+}
+
+.v-theme--dark .hljs-keyword,
+.v-theme--dark .hljs-selector-tag,
+.v-theme--dark .hljs-built_in,
+.v-theme--dark .hljs-name,
+.v-theme--dark .hljs-tag {
+  color: #f97583;
+}
+
+.v-theme--light .hljs-string,
+.v-theme--light .hljs-title,
+.v-theme--light .hljs-section,
+.v-theme--light .hljs-attribute,
+.v-theme--light .hljs-literal,
+.v-theme--light .hljs-template-tag,
+.v-theme--light .hljs-template-variable,
+.v-theme--light .hljs-type,
+.v-theme--light .hljs-selector-id,
+.v-theme--light .hljs-selector-class,
+.v-theme--light .hljs-selector-attr,
+.v-theme--light .hljs-selector-pseudo,
+.v-theme--light .hljs-quote {
+  color: #032f62;
+}
+
+.v-theme--dark .hljs-string,
+.v-theme--dark .hljs-title,
+.v-theme--dark .hljs-section,
+.v-theme--dark .hljs-attribute,
+.v-theme--dark .hljs-literal,
+.v-theme--dark .hljs-template-tag,
+.v-theme--dark .hljs-template-variable,
+.v-theme--dark .hljs-type,
+.v-theme--dark .hljs-selector-id,
+.v-theme--dark .hljs-selector-class,
+.v-theme--dark .hljs-selector-attr,
+.v-theme--dark .hljs-selector-pseudo,
+.v-theme--dark .hljs-quote {
+  color: #a5d6ff;
+}
+
+.v-theme--light .hljs-number,
+.v-theme--light .hljs-meta {
+  color: #005cc5;
+}
+
+.v-theme--dark .hljs-number,
+.v-theme--dark .hljs-meta {
+  color: #79b8ff;
+}
+
+.v-theme--light .hljs-comment {
+  color: #6a737d;
+}
+
+.v-theme--dark .hljs-comment {
+  color: #8b949e;
+}
+
+.v-theme--light .hljs-function,
+.v-theme--light .hljs-class {
+  color: #6f42c1;
+}
+
+.v-theme--dark .hljs-function,
+.v-theme--dark .hljs-class {
+  color: #d2a8ff;
+}
+
+.v-theme--light .hljs-variable,
+.v-theme--light .hljs-template-variable,
+.v-theme--light .hljs-params {
+  color: #e36209;
+}
+
+.v-theme--dark .hljs-variable,
+.v-theme--dark .hljs-template-variable,
+.v-theme--dark .hljs-params {
+  color: #ffa657;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+}
+
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-3 > * + * { margin-top: 0.75rem; }
+.space-y-2 > * + * { margin-top: 0.5rem; }
+.space-y-1 > * + * { margin-top: 0.25rem; }
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cursor-move { cursor: grab; }
+.cursor-move:active { cursor: grabbing; }
+
+@media (max-width: 768px) {
+  .v-app-bar .v-toolbar-title {
+    max-width: 200px;
+  }
+}

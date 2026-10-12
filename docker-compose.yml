@@ -1,0 +1,53 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:///./data/python_academy.db
+      # COURSES_DIR is resolved against the container WORKDIR (/app) in
+      # backend/app/core/config.py (Path(COURSES_DIR).resolve()).
+      # Keep it relative ("courses" -> /app/courses, matching the volume
+      # mount below), or set an absolute path (e.g. /app/courses) if you
+      # change WORKDIR.
+      COURSES_DIR: courses
+    volumes:
+      - ./backend/courses:/app/courses:ro
+      - academy-data:/app/data
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')\""]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      # VITE_API_BASE_URL is baked into the JS bundle at build time (Vite),
+      # so it must be passed as a build arg — runtime environment variables
+      # cannot change it. Override for production, e.g.:
+      # VITE_API_BASE_URL=https://api.example.com/api
+      args:
+        VITE_API_BASE_URL: http://127.0.0.1:8000/api
+    ports:
+      - "5173:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  academy-data:
